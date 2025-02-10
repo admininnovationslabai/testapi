@@ -4,11 +4,11 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 dogs = [
-    {"id": 1, "name": "Buddy"},
-    {"id": 2, "name": "Charlie"},
-    {"id": 3, "name": "Max"},
-    {"id": 4, "name": "Rocky"},
-    {"id": 5, "name": "Bella"}
+    {"id": 1, "name": "Ramu"},
+    {"id": 2, "name": "Somu"},
+    {"id": 3, "name": "Raju"},
+    {"id": 4, "name": "Jiju"},
+    {"id": 5, "name": "siju"}
 ]
 
 @app.route('/dogs', methods=['GET'])
