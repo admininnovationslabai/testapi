@@ -238,6 +238,69 @@ def get_cars():
         return jsonify(filtered_cars)
 
 
+
+
+
+
+#sample dogs_getapi
+
+dogs = [
+    {"id": 1, "name": "Ramu", "breed": "Labrador"},
+    {"id": 2, "name": "Somu", "breed": "Beagle"},
+    {"id": 3, "name": "Raju", "breed": "Golden Retriever"},
+    {"id": 4, "name": "Jiju", "breed": "Bulldog"},
+    {"id": 5, "name": "Siju", "breed": "Poodle"}
+]
+
+@app.route('/dogs', methods=['GET'])
+def get_dogs():
+    id_param = request.args.get('id')  # Get 'id' query parameter
+    name_search = request.args.get('name','').lower()  # Partial name search
+    breed_search = request.args.get('breed', '').lower()
+    sort_order = request.args.get("sort") # Sorting 
+    
+
+    # Check if 'id' is provided and valid
+    if id_param:
+        if id_param.isdigit():
+         filtered_dogs = [dog for dog in dogs if dog['id'] == int(id_param)]
+         if not filtered_dogs:  # If no matching dog is found
+            return jsonify({"error": f"No dog found with ID {id_param}."}), 404
+        else:
+            return jsonify({"error": "ID must be an integer."}), 400
+    else:
+         # Filtering by name or breed if provided
+        filtered_dogs = [dog for dog in dogs if 
+                         (name_search in dog['name'].lower() if name_search else True) and
+                         (breed_search in dog['breed'].lower() if breed_search else True)]
+       
+         # If no matching dogs are found, return a 404 error instead of an empty list
+        if not filtered_dogs:
+             return jsonify({"error": f"No dogs found for the given filters"}), 404
+   
+
+   # Sorting logic
+        if sort_order:
+            if sort_order not in ["asc", "desc"]:
+                return jsonify({"error": "Invalid sort order. Use 'asc' or 'desc'."}), 400
+
+            def sort_by_name(dogs):
+                return dogs["name"]
+
+            filtered_dogs.sort(key=sort_by_name, reverse=(sort_order == "desc"))
+            
+    return jsonify(filtered_dogs)
+
+@app.route('/dogs/<int:id>', methods=['GET'])
+def get_dog_by_id(id: int):
+    dog = next((d for d in dogs if d['id'] == id), None)
+    return jsonify(dog) if dog else (jsonify({'error': 'Dog not found.'}), 404)
+
+
+
+
+
+
 if __name__ == '__main__':
     # Listen on all network interfaces on port 5000
     app.run(host='0.0.0.0', port=5000, debug=True)
