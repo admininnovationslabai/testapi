@@ -13,13 +13,13 @@ dogs = [
 
 @app.route('/dogs', methods=['GET'])
 def get_dogs():
-    name_search = request.args.get('name', '').lower()
-    sort_by_id = request.args.get('sort_by') == "id"
+    name_search = request.args.get('name', '').lower()   # it'll extract the name query paramter
+    sort_by_id = request.args.get('sort_by') == "id"    # extract sort by query parameter
     
-    filtered_dogs = [dog for dog in dogs if name_search in dog['name'].lower()]
+    filtered_dogs = [dog for dog in dogs if name_search in dog['name'].lower()]  #returns the name of the dogs mentioned in search string and case sensitive
     
-    if sort_by_id:
-        filtered_dogs.sort(key=lambda x: x['id'])
+    if sort_by_id:    #sort by id
+        filtered_dogs.sort(key=lambda x: x['id'])  #it extarcts id value from each dictionary in asc
     
     return jsonify(filtered_dogs)
 
