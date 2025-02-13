@@ -249,7 +249,7 @@ dogs = [
     {"id": 2, "name": "Somu", "breed": "Beagle"},
     {"id": 3, "name": "Raju", "breed": "Golden Retriever"},
     {"id": 4, "name": "Jiju", "breed": "Bulldog"},
-    {"id": 5, "name": "Siju", "breed": "Poodle"}
+    {"id": 5, "name": "Siju", "breed": "Labrador"}
 ]
 
 @app.route('/dogs', methods=['GET'])
