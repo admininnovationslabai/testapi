@@ -7,7 +7,7 @@ phones = [
     {"id": 2, "name": "Samsung Galaxy S21", "brand": "Samsung", "price": 799},
     {"id": 3, "name": "OnePlus 9", "brand": "OnePlus", "price": 729},
     {"id": 4, "name": "Google Pixel 6", "brand": "Google", "price": 5599},
-    {"id": 5, "name": "Xiaomi Mi 11", "brand": "Xiaomi", "price": 6699}
+    {"id": 5, "name": "Xiaomi Mi 11", "brand": "Xiaomi", "price": 7699}
 ]
 
 @app.route('/phones', methods=['GET'])
