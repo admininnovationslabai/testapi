@@ -8,7 +8,7 @@ cars = [
     {"id": 2, "name": "Honda Accord", "make": "Honda", "model": "Accord", "year": 2023, "price": 26999},
     {"id": 3, "name": "Ford Mustang", "make": "Ford", "model": "Mustang", "year": 2021, "price": 39999},
     {"id": 4, "name": "Chevrolet Malibu", "make": "Chevrolet", "model": "Malibu", "year": 2020, "price": 21999},
-    {"id": 5, "name": "BMW 3 Series", "make": "BMW", "model": "3 Series", "year": 2022, "price": 42999}
+    {"id": 5, "name": "BMW 4 Series", "make": "BMW", "model": "4 Series", "year": 2022, "price": 42999}
 ]
 
 @app.route('/cars', methods=['GET'])
